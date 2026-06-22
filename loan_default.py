@@ -109,13 +109,13 @@ print(f"Random Forest        - Accuracy: {accuracy_score(Y_test, forest_pred):.4
 production_model = DecisionTreeClassifier(random_state=42)
 production_model.fit(X_train, Y_train)
 
-# joblib.dump(production_model, 'loan_default_model.pkl')
-# joblib.dump(encoders, 'encoders.pkl')
+joblib.dump(production_model, 'loan_default_model.pkl')
+joblib.dump(encoders, 'encoders.pkl')
 
-# print("Production model and encoders saved")
+print("Production model and encoders saved")
 
-# for col in categorical_cols:
-#     print(f"{col}: {encoders[col].classes_}")
+for col in categorical_cols:
+    print(f"{col}: {encoders[col].classes_}")
 
 def predict_loan_default(applicant):
     # converting categorical inputs using saved encoders
@@ -144,7 +144,7 @@ def predict_loan_default(applicant):
 
 
     # Test with example applicants
-    
+
 # Applicant 1 - Low risk profile
 applicant1 = {
     'Age': 45,
